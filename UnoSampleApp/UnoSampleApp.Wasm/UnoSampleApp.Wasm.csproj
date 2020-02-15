@@ -7,6 +7,12 @@
     <DefineConstants>$(DefineConstants);__WASM__</DefineConstants>
     <NoWarn>NU1701</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
+    <DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
   <ItemGroup>
     <Content Include="..\UnoSampleApp.UWP\Assets\*.png" Link="Assets\%(FileName)%(Extension)" />
   </ItemGroup>
@@ -18,24 +24,24 @@
     <LinkerDescriptor Include="LinkerConfig.xml" />
   </ItemGroup>
   <ItemGroup>
-    <!-- 
-    This item group is required by the project templace because of the
+    <!--
+    This item group is required by the project template because of the
     new SDK-Style project, otherwise some files are not aded automatically.
-    
+
     You can safely remove this ItemGroup completely.
     -->
-    <Compile Remove="Program.cs" />
-    <Compile Include="Program.cs" />
-    <Content Include="LinkerConfig.xml" />
-    <Content Include="wwwroot/web.config" />
+    <None Include="Program.cs" />
+    <None Include="LinkerConfig.xml" />
+    <None Include="wwwroot\web.config" />
   </ItemGroup>
   <ItemGroup>
     <!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
-    <PackageReference Include="Uno.UI" Version="1.45.0" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.0-dev.244" />
-    <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.0-dev.244" />
+    <PackageReference Include="Uno.UI" Version="2.0.532" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="2.0.532" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.10" />
+    <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.10" />
   </ItemGroup>
   <Import Project="..\UnoSampleApp.Shared\UnoSampleApp.Shared.projitems" Label="Shared" Condition="Exists('..\UnoSampleApp.Shared\UnoSampleApp.Shared.projitems')" />
 </Project>

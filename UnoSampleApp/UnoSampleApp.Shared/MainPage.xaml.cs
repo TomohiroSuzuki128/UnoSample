@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,11 +25,6 @@ namespace UnoSampleApp
         public MainPage()
         {
             this.InitializeComponent();
-        }
-
-        async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            await new MessageDialog("Contents", "Title").ShowAsync();
         }
     }
 }
