@@ -5,16 +5,40 @@
     xmlns:local="using:UnoSampleApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <win:Style x:Key="NativeDefaultButton" TargetType="Button" />
+        <win:Style x:Key="NativeDefaultTextBox" TargetType="TextBox" />
+        <win:Style x:Key="NativeDefaultCheckBox" TargetType="CheckBox" />
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top"
                     Margin="10,50,0,0"
                     >
-            <TextBox x:Name="textBox" Header="Header" VerticalAlignment="Stretch"
-                     Text="TextBox" Margin="5" FontSize="30" />
-            <Button x:Name="button"  Content="Click me !" VerticalAlignment="Stretch"
+            <TextBox x:Name="unoTextBox" Header="Header" VerticalAlignment="Stretch"
+                     Text="UnoStyleTextBox" Margin="5" FontSize="30" />
+            <TextBox x:Name="nativeTextBox" Header="Header" VerticalAlignment="Stretch"
+                     Text="NativeStyleTextBox" Margin="5" FontSize="30"
+                     Style="{StaticResource NativeDefaultTextBox}"
+                     />
+            <Button x:Name="unoButton"  Content="Click me !" VerticalAlignment="Stretch"
                     Margin="5" FontSize="30"
                     Click="Button_Click"
+                    />
+            <Button x:Name="nativeButton"  Content="Click me !" VerticalAlignment="Stretch"
+                    Margin="5" FontSize="30"
+                    Style="{StaticResource NativeDefaultButton}"
+                    Click="Button_Click"
+                    />
+            <CheckBox x:Name="unoCheckBox"  Content="Uno Style" VerticalAlignment="Stretch"
+                    FontSize="30"
+                    />
+            <CheckBox x:Name="nativeCheckBox"  Content="Native Style" VerticalAlignment="Stretch"
+                    FontSize="30"
+                    Style="{StaticResource NativeDefaultCheckBox}"
                     />
         </StackPanel>
     </Grid>

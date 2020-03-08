@@ -26,6 +26,10 @@ namespace UnoSampleApp
         public MainPage()
         {
             this.InitializeComponent();
+            var uButton = unoButton;
+            var nButton = nativeButton;
+            var uCheckBox = unoCheckBox;
+            var nCheckBox = nativeCheckBox;
         }
 
         async void Button_Click(object sender, RoutedEventArgs e)
